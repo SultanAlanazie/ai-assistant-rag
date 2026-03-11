@@ -31,9 +31,9 @@ User Question → Retriever (MMR) → Relevant Chunks → LLM (Ollama) → Answe
 |---|---|
 | Document Loading | LangChain PyPDFDirectoryLoader |
 | Text Splitting | RecursiveCharacterTextSplitter |
-| Embeddings | `sentence-transformers/all-mpnet-base-v2` |
+| Embeddings | sentence-transformers/all-mpnet-base-v2 |
 | Vector Database | ChromaDB |
-| LLM | Ollama (`llama3.1` by default) |
+| LLM | Ollama (llama3.1) |
 | UI | Streamlit |
 | Retrieval Strategy | MMR (Maximum Marginal Relevance) |
 
