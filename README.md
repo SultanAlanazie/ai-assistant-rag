@@ -1,4 +1,4 @@
-# 🤖 AI Assistant with RAG System
+# AI Assistant with RAG System
 
 A fully local AI Assistant powered by Retrieval Augmented Generation (RAG) that lets you chat with your PDF documents using local LLMs.
 
@@ -9,7 +9,7 @@ A fully local AI Assistant powered by Retrieval Augmented Generation (RAG) that 
 
 ---
 
-## 📌 What It Does
+## What It Does
 
 - Load any PDF documents into a local vector database
 - Ask questions in natural language and get accurate answers
@@ -19,7 +19,7 @@ A fully local AI Assistant powered by Retrieval Augmented Generation (RAG) that 
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 PDFs → PyPDF Loader → Text Chunker → Embeddings (HuggingFace) → ChromaDB
@@ -39,7 +39,7 @@ User Question → Retriever (MMR) → Relevant Chunks → LLM (Ollama) → Answe
 
 ---
 
-## ⚙️ Requirements
+## Requirements
 
 - Python 3.10+
 - [Ollama](https://ollama.com/download) installed and running
@@ -47,7 +47,7 @@ User Question → Retriever (MMR) → Relevant Chunks → LLM (Ollama) → Answe
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the repository
 ```bash
@@ -101,7 +101,7 @@ Open your browser at `http://localhost:8501`
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ai-assistant-rag/
@@ -128,7 +128,7 @@ pip install torch --index-url https://download.pytorch.org/whl/cu121
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 ```
 streamlit
@@ -146,7 +146,7 @@ torch
 
 ---
 
-## 📂 Sample Data Used for Testing
+## Sample Data Used for Testing
 
 The system was tested using the **Data Classification Policy** published by the **Saudi Data and Artificial Intelligence Authority (SDAIA)**.
 
