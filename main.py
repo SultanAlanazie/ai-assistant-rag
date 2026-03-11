@@ -21,8 +21,6 @@ st.sidebar.caption(f" Device: {device_label}")
 if not torch.cuda.is_available():
     st.sidebar.warning(
         "Running on CPU. Embeddings will be slow.\n\n"
-        "Reinstall PyTorch with CUDA support:\n"
-        "`pip install torch --index-url https://download.pytorch.org/whl/cu121`"
     )
 
 
