@@ -12,11 +12,10 @@ from vectorize_documents import embeddings, load_vectorstore, vectorstore_exists
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
-# ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(page_title="AI Assistant", layout="centered")
 st.title("AI Assistant using RAG System")
 
-# ── GPU/CPU indicator in sidebar ───────────────────────────────────────────────
+# GPU/CPU indicator
 device_label = "GPU ON" if torch.cuda.is_available() else "CPU ON"
 st.sidebar.caption(f" Device: {device_label}")
 if not torch.cuda.is_available():
@@ -26,16 +25,16 @@ if not torch.cuda.is_available():
         "`pip install torch --index-url https://download.pytorch.org/whl/cu121`"
     )
 
-# ── Guard: vector store must exist ────────────────────────────────────────────
+
 if not vectorstore_exists():
     st.error(
         "Vector store not found. "
-        "Run `python vectorize_documents.py` first to index your PDFs."
+        "Run (python vectorize_documents.py) first."
     )
     st.stop()
 
 
-# ── Setup helpers ──────────────────────────────────────────────────────────────
+# Setup
 @st.cache_resource(show_spinner="Loading vector store.")
 def get_vectorstore():
     logger.info("Loading vector store from disk.")
@@ -47,11 +46,10 @@ def get_chain(_vectorstore):
     llm = Ollama(
         model="llama3.1",   
         temperature=0,
-        num_predict=1500,   # enough for complete multi-step answers
-        num_ctx=4096,       # balanced context window
+        num_predict=1500,   
+        num_ctx=4096,       
     )
 
-    # Balanced retrieval: accurate enough, not too slow
     retriever = _vectorstore.as_retriever(
         search_type="mmr",
         search_kwargs={"k": 6, "fetch_k": 20},
@@ -96,20 +94,18 @@ Complete Answer:"""
     return chain
 
 
-# ── Session state ──────────────────────────────────────────────────────────────
+# Session state
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
 vectorstore = get_vectorstore()
 chain = get_chain(vectorstore)
 
-# ── Chat history display ───────────────────────────────────────────────────────
 for msg in st.session_state.chat_history:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# ── User input ─────────────────────────────────────────────────────────────────
-user_input = st.chat_input("Ask a question about your documents...")
+user_input = st.chat_input("Ask a question about your documents.")
 
 if user_input:
     st.session_state.chat_history.append({"role": "user", "content": user_input})
@@ -121,22 +117,21 @@ if user_input:
         response_box = st.empty()
         full_answer = ""
 
-        with st.spinner("Thinking..."):
+        with st.spinner("Thinking."):
             response = chain.invoke({"question": user_input})
 
         answer = response["answer"]
         source_docs = response.get("source_documents", [])
 
-        # Stream the answer word by word for perceived speed
         import time
         words = answer.split(" ")
         for i, word in enumerate(words):
             full_answer += word + " "
-            if i % 8 == 0:  # update every 8 words to reduce re-renders
+            if i % 8 == 0:
                 response_box.markdown(full_answer + "▌")
         response_box.markdown(answer)
 
-        # ── Source citations ───────────────────────────────────────────────────
+        # Source citations
         if source_docs:
             with st.expander("Sources ↓↓↓"):
                 seen = set()
