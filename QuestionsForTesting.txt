@@ -1,0 +1,22 @@
+Q:
+
+What are the steps of data classification process  
+
+Answers: (Page 20 - 25)
+7 Steps
+
+
+What are the data dlassification levels
+
+Answers: (Page 5 - 10) in table number 1
+- Top Secret
+- Secret
+- Restricted
+- Public
+
+the four levels of impact:
+
+- High Impact
+- Medium Impact
+- Low Impact
+- No Impact

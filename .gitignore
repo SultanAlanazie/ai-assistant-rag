@@ -1,0 +1,26 @@
+# Virtual environment
+venv/
+.venv/
+
+# Vector database (auto-generated, can be large)
+vector_db_dir/
+
+# PDF documents (may contain sensitive data)
+data/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment variables
+.env
+config.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
