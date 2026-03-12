@@ -15,7 +15,7 @@ A fully local AI Assistant powered by Retrieval Augmented Generation (RAG) that 
 - Ask questions in natural language and get accurate answers
 - Cites the exact source document and page number for every answer
 - Maintains conversation history for follow-up questions
-- Runs 100% locally — your documents never leave your machine
+- Runs 100% locally, your documents never leave your machine
 
 ---
 
@@ -159,3 +159,13 @@ The system was tested using the **Data Classification Policy** published by the 
 | **Access** | Publicly available |
 
 > This document was used strictly for testing and demonstration purposes. The system is not limited to this document.
+
+---
+
+Roadmap
+
+ Support for more file types (DOCX, TXT, CSV)
+ Multi-language support
+ Upload documents directly from the UI
+ Model selector in the sidebar
+ Export chat history
