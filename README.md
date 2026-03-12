@@ -165,7 +165,6 @@ The system was tested using the **Data Classification Policy** published by the 
 ## Roadmap
 
 - [ ] Support for more file types (DOCX, TXT, CSV)
-- [ ] Multi-language support
+- [ ] Multi-modal support
 - [ ] Upload documents directly from the UI
-- [ ] Model selector in the sidebar
 - [ ] Export chat history
